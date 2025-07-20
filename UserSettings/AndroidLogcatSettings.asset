@@ -1,0 +1,251 @@
+{
+    "m_SelectedDeviceId": "R5CXA3FVQMK",
+    "m_SelectedPackage": {
+        "deviceId": "R5CXA3FVQMK",
+        "name": "com.DefaultCompany.AlienIntruder",
+        "processId": 30374,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 991,
+            "exited": true
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 1000,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.DefaultCompany.unityar_slingshot_game",
+            "processId": 7274,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.unityar_slingshot_game",
+            "processId": 9638,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 24329,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 28311,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 6638,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 9717,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 11951,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 15572,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 18070,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 29591,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 688,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 7015,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 13571,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 17233,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 21587,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 30219,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 2621,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 6401,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 12820,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 15590,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 17818,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 22541,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 26661,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 30374,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.unityar_slingshot_game",
+            "processId": 13519,
+            "exited": false
+        },
+        {
+            "deviceId": "HMCESSH6K7CQ6PGQ",
+            "name": "com.DefaultCompany.unityar_slingshot_game",
+            "processId": 29428,
+            "exited": false
+        },
+        {
+            "deviceId": "G6HE7HHU8DZDCMLV",
+            "name": "com.android.settings",
+            "processId": 20867,
+            "exited": false
+        },
+        {
+            "deviceId": "G6HE7HHU8DZDCMLV",
+            "name": "com.miui.home",
+            "processId": 2582,
+            "exited": false
+        },
+        {
+            "deviceId": "AUXH9X4826G01066",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 1170,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "Behavior": 0
+    },
+    "m_Filter": "unity",
+    "m_FilterIsRegularExpression": false,
+    "m_SymbolPaths": []
+}
