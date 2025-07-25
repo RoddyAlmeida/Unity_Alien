@@ -106,11 +106,6 @@ public class SlingShot : MonoBehaviour
             ReleaseAmmo();
             isDrag = false;
         }
-        // Tiro rápido: si solo haces click sin arrastrar, dispara directo
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isDrag)
-        {
-            Shoot();
-        }
     }
     void GrabAmmo()
     {

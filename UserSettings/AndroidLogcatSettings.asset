@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R5CXA3FVQMK",
         "name": "com.DefaultCompany.AlienIntruder",
-        "processId": 23577,
+        "processId": 27935,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -195,9 +195,57 @@
             "exited": false
         },
         {
+            "deviceId": "R5CXA3FVQMK",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 27935,
+            "exited": false
+        },
+        {
             "deviceId": "R58R44ENM1M",
             "name": "com.DefaultCompany.unityar_slingshot_game",
             "processId": 13519,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 20539,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 4942,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 7696,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 8510,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 20792,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 4298,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R44ENM1M",
+            "name": "com.DefaultCompany.AlienIntruder",
+            "processId": 5975,
             "exited": false
         },
         {
