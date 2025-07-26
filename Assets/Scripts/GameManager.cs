@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     public GameObject leaderBoardUI;
     public GameObject victoryUI; // Nuevo: pantalla de victoria
     public GameObject defeatUI; // Nuevo: pantalla de derrota
+    
+    [Header("Victory/Defeat UI Text")]
+    public TextMeshProUGUI victoryScoreText; // Texto de puntuación en pantalla de victoria
+    public TextMeshProUGUI defeatScoreText; // Texto de puntuación en pantalla de derrota
     
     [Header("Lives System")]
     public GameObject lifeImagePrefab; // Prefab del PNG de vida
@@ -144,6 +149,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         OnPlaneSelected?.Invoke(selectedPlane);
     }
+    
+
 
     void SetMaterialTransparent(ARPlane plane)
     {        
@@ -245,6 +252,7 @@ public class GameManager : MonoBehaviour
         if (goodAlienLives <= 0)
         {
             Debug.Log("=== SIN VIDAS - MOSTRANDO DERROTA ===");
+            Debug.Log($"=== PUNTUACIÓN FINAL ANTES DE ShowDefeatScreen: {totalPoints} ===");
             ShowDefeatScreen();
         }
     }
@@ -254,6 +262,7 @@ public class GameManager : MonoBehaviour
         badAliens.Remove(id);
         badAliensRemaining--;
         totalPoints += points;
+        Debug.Log($"=== PUNTOS ACUMULADOS: {totalPoints} (añadidos: {points}) ===");
         scoreTxt.text = totalPoints.ToString();
         
         // NO recargar esferas al capturar aliens malos
@@ -297,6 +306,7 @@ public class GameManager : MonoBehaviour
     void ShowVictoryScreen()
     {
         Debug.Log("=== MOSTRANDO PANTALLA DE VICTORIA ===");
+        Debug.Log($"=== PUNTUACIÓN AL INICIO DE ShowVictoryScreen: {totalPoints} ===");
         
         // Detener el juego
         goodAlienAlive = false;
@@ -342,6 +352,9 @@ public class GameManager : MonoBehaviour
         gameUI.SetActive(false);
         victoryUI.SetActive(true);
         
+        // Efecto de fade-in para la pantalla de victoria
+        StartCoroutine(FadeInVictoryScreen());
+        
         // Cambiar el color de fondo a verde
         Canvas canvas = victoryUI.GetComponent<Canvas>();
         if (canvas != null)
@@ -352,6 +365,13 @@ public class GameManager : MonoBehaviour
                 canvasGroup = victoryUI.AddComponent<CanvasGroup>();
             }
             canvasGroup.alpha = 1f;
+        }
+        
+        // Actualizar texto de puntuación en pantalla de victoria
+        Debug.Log($"=== PUNTUACIÓN EN VICTORIA: {totalPoints} ===");
+        if (victoryScoreText != null)
+        {
+            victoryScoreText.text = "Puntuación: " + totalPoints.ToString();
         }
         
         // Asegurar que los botones de la pantalla de victoria estén activos
@@ -375,6 +395,7 @@ public class GameManager : MonoBehaviour
     void ShowDefeatScreen()
     {
         Debug.Log("=== MOSTRANDO PANTALLA DE DERROTA ===");
+        Debug.Log($"=== PUNTUACIÓN AL INICIO DE ShowDefeatScreen: {totalPoints} ===");
         
         // Detener el juego
         goodAlienAlive = false;
@@ -420,6 +441,9 @@ public class GameManager : MonoBehaviour
         gameUI.SetActive(false);
         defeatUI.SetActive(true);
         
+        // Efecto de fade-in para la pantalla de derrota
+        StartCoroutine(FadeInDefeatScreen());
+        
         // Cambiar el color de fondo a rojo
         Canvas canvas = defeatUI.GetComponent<Canvas>();
         if (canvas != null)
@@ -430,6 +454,13 @@ public class GameManager : MonoBehaviour
                 canvasGroup = defeatUI.AddComponent<CanvasGroup>();
             }
             canvasGroup.alpha = 1f;
+        }
+        
+        // Actualizar texto de puntuación en pantalla de derrota
+        Debug.Log($"=== PUNTUACIÓN EN DERROTA: {totalPoints} ===");
+        if (defeatScoreText != null)
+        {
+            defeatScoreText.text = "Puntuación: " + totalPoints.ToString();
         }
         
         // Asegurar que los botones de la pantalla de derrota estén activos
@@ -757,5 +788,55 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("ARSlingshotGame");
+    }
+    
+
+    
+    // Animación de fade-in para pantalla de victoria
+    IEnumerator FadeInVictoryScreen()
+    {
+        CanvasGroup canvasGroup = victoryUI.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = victoryUI.AddComponent<CanvasGroup>();
+        }
+        
+        canvasGroup.alpha = 0f;
+        
+        float duration = 1f;
+        float elapsed = 0f;
+        
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / duration);
+            yield return null;
+        }
+        
+        canvasGroup.alpha = 1f;
+    }
+    
+    // Animación de fade-in para pantalla de derrota
+    IEnumerator FadeInDefeatScreen()
+    {
+        CanvasGroup canvasGroup = defeatUI.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = defeatUI.AddComponent<CanvasGroup>();
+        }
+        
+        canvasGroup.alpha = 0f;
+        
+        float duration = 1f;
+        float elapsed = 0f;
+        
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / duration);
+            yield return null;
+        }
+        
+        canvasGroup.alpha = 1f;
     }
 }
