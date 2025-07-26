@@ -35,7 +35,7 @@ public class Ammo : MonoBehaviour
             if (duration <= 0)
             {
                 ammoFallingSound.Play();
-                AmmoHit();
+                AmmoMissed(); // Usar AmmoMissed cuando cae al vacío
                 shooted = false;
             }
         }
@@ -51,34 +51,79 @@ public class Ammo : MonoBehaviour
         OnAmmoHit = null;
         Destroy(gameObject);
     }
+    
+    // Método para cuando la esfera cae al vacío (pierde munición)
+    void AmmoMissed()
+    {
+        // Solo perder munición cuando cae al vacío
+        SlingShot slingShot = FindObjectOfType<SlingShot>();
+        if (slingShot != null)
+        {
+            slingShot.NotifyAmmoLost();
+        }
+        
+        OnAmmoHit?.Invoke();
+        if (explosionPrefab)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
+        OnAmmoHit = null;
+        Destroy(gameObject);
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (!shooted)
             return;
-        if (other.GetComponent<Target>() != null)
+            
+        // Detectar colisión con alien malo
+        BadAlien badAlien = other.GetComponent<BadAlien>();
+        if (badAlien != null)
         {
-            OnAmmoHitTarget?.Invoke(other.GetComponent<Target>().ID);
-            other.GetComponent<Target>().ReceiveDamage(100, shootOrigin);            
+            OnAmmoHitTarget?.Invoke(badAlien.ID);
+            badAlien.ReceiveDamage(100, shootOrigin);            
             AmmoHit();
+            return;
         }
-        else
+        
+        // Detectar colisión con alien bueno (por error)
+        GoodAlien goodAlien = other.GetComponent<GoodAlien>();
+        if (goodAlien != null)
         {
-            ammoHittingGround.Play();
+            Debug.Log("¡Has golpeado al alien bueno por error!");
+            goodAlien.OnCapturedByPlayer();
+            AmmoHit();
+            return;
         }
+        
+        // Detectar colisión con Target (para compatibilidad con el sistema anterior)
+        Target target = other.GetComponent<Target>();
+        if (target != null)
+        {
+            OnAmmoHitTarget?.Invoke(target.ID);
+            target.ReceiveDamage(100, shootOrigin);            
+            AmmoHit();
+            return;
+        }
+        
+        // Si no es ningún alien, reproducir sonido de impacto
+        ammoHittingGround.Play();
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (!shooted)
             return;
-        // Rebote: solo cuenta si no es un Target
-        if (collision.gameObject.GetComponent<Target>() == null)
+            
+        // Rebote: solo cuenta si no es un alien o target
+        if (collision.gameObject.GetComponent<BadAlien>() == null && 
+            collision.gameObject.GetComponent<GoodAlien>() == null &&
+            collision.gameObject.GetComponent<Target>() == null)
         {
             bounceCount++;
             if (bounceCount >= maxBounces)
             {
-                AmmoHit();
+                AmmoMissed(); // Usar AmmoMissed cuando rebota demasiado
             }
         }
     }

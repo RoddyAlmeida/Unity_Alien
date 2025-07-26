@@ -9,6 +9,7 @@ public class SlingShot : MonoBehaviour
     int forceMultiplier = 600; // 800
     int forceFordwardScalar = 4; // 5
     public int AmmoLeft {get; set;}
+    public int MaxAmmo {get; set;} = 7; // Límite de esferas
 
     public bool isDrag;
     float mouseZCoord;
@@ -21,7 +22,7 @@ public class SlingShot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AmmoLeft = 100;
+        AmmoLeft = 0; // Inicializar en 0, se establecerá desde GameManager
     }
     public void Reload()
     {
@@ -30,9 +31,9 @@ public class SlingShot : MonoBehaviour
             currentAmmo = Instantiate(ammoPrefab, transform.position, transform.rotation, transform);
             currentAmmo.GetComponent<Rigidbody>().isKinematic = true;
             currentAmmo.GetComponent<Ammo>().OnAmmoHit += OnCurrentAmmoHit;
-            AmmoLeft--;            
+            // NO decrementar AmmoLeft aquí, solo cuando se lanza
         }
-        OnReload?.Invoke(AmmoLeft);
+        // NO invocar OnReload aquí, solo cuando realmente se pierde munición
     }
     void Shoot()
     {
@@ -44,6 +45,10 @@ public class SlingShot : MonoBehaviour
             currentAmmo.GetComponent<Ammo>().shooted = true;
             currentAmmo.GetComponent<Ammo>().shootOrigin = currentAmmo.transform.position;       
             currentAmmo = null;
+            
+            // NO decrementar esferas aquí, solo cuando cae al vacío
+            // NO invocar OnReload aquí, solo cuando realmente se pierde munición
+            
             shootSound.Play();
         }
     }
@@ -65,7 +70,16 @@ public class SlingShot : MonoBehaviour
 
     void OnCurrentAmmoHit()
     {
-        StartCoroutine(DelayedReload(2));
+        // Cuando la esfera golpea algo (alien o vacío), recargar automáticamente
+        StartCoroutine(DelayedReload(0.5f));
+    }
+    
+    // Método público para que Ammo pueda notificar sobre pérdida de munición
+    public void NotifyAmmoLost()
+    {
+        AmmoLeft--;
+        // Solo notificar cuando realmente se pierde munición
+        OnReload?.Invoke(AmmoLeft);
     }
 
     public Vector3 GetShootForce()
